@@ -13,14 +13,14 @@ export default {
       url: 'https://www.github.com',
       number: 1,
       books: [
-        {name:'vue/js action'},
-        {name:'javascript la'}
+        { name: 'vue/js action' },
+        { name: 'javascript la' }
       ]
     }
   },
   computed: {
-    atest: function() {
-      console.log("do atest");
+    atest: function () {
+      console.log('do atest')
       return this.number - 1
     }
   },
@@ -29,7 +29,7 @@ export default {
       this.show = false
     },
     calcute: function () {
-      console.log("do calcute");
+      console.log('do calcute')
       return this.number - 1
     }
   }
