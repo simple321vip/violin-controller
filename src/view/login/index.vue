@@ -1,118 +1,94 @@
 <template>
   <div>
-    <el-table :data="tableData"
-              :span-method="arraySpanMethod"
-              border
-              style="width: 100%">
-      <el-table-column prop="id"
-                       label="ID"
-                       width="180">
-      </el-table-column>
-      <el-table-column prop="name"
-                       label="姓名">
-      </el-table-column>
-      <el-table-column prop="amount1"
-                       sortable
-                       label="数值 1">
-      </el-table-column>
-      <el-table-column prop="amount2"
-                       sortable
-                       label="数值 2">
-      </el-table-column>
-      <el-table-column prop="amount3"
-                       sortable
-                       label="数值 3">
-      </el-table-column>
-    </el-table>
-
-    <el-table :data="tableData"
-              :span-method="objectSpanMethod"
-              border
-              style="width: 100%; margin-top: 20px">
-      <el-table-column prop="id"
-                       label="ID"
-                       width="180">
-      </el-table-column>
-      <el-table-column prop="name"
-                       label="姓名">
-      </el-table-column>
-      <el-table-column prop="amount1"
-                       label="数值 1（元）">
-      </el-table-column>
-      <el-table-column prop="amount2"
-                       label="数值 2（元）">
-      </el-table-column>
-      <el-table-column prop="amount3"
-                       label="数值 3（元）">
-      </el-table-column>
-    </el-table>
+    <el-form :model="ruleForm2"
+             :rules="rules2"
+             ref="ruleForm2"
+             label-position="left"
+             label-width="0px"
+             class="demo-ruleForm login-container">
+      <h3 class="title">系统登录</h3>
+      <el-form-item prop="account">
+        <el-input type="text"
+                  v-model="ruleForm2.account"
+                  auto-complete="off"
+                  placeholder="账号"></el-input>
+      </el-form-item>
+      <el-form-item prop="checkPass">
+        <el-input type="password"
+                  v-model="ruleForm2.checkPass"
+                  auto-complete="off"
+                  placeholder="密码"></el-input>
+      </el-form-item>
+      <el-checkbox v-model="checked"
+                   checked
+                   class="remember">记住密码</el-checkbox>
+      <el-form-item style="width:100%;">
+        <el-button type="primary"
+                   style="width:100%;"
+                   @click.native.prevent="handleSubmit2"
+                   :loading="logining">登录</el-button>
+        <!--<el-button @click.native.prevent="handleReset2">重置</el-button>-->
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'LOGIN',
+  name: 'Login',
   data () {
     return {
-      tableData: [{
-        id: '12987122',
-        name: '王小虎',
-        amount1: '234',
-        amount2: '3.2',
-        amount3: 10
-      }, {
-        id: '12987123',
-        name: '王小虎',
-        amount1: '165',
-        amount2: '4.43',
-        amount3: 12
-      }, {
-        id: '12987124',
-        name: '王小虎',
-        amount1: '324',
-        amount2: '1.9',
-        amount3: 9
-      }, {
-        id: '12987125',
-        name: '王小虎',
-        amount1: '621',
-        amount2: '2.2',
-        amount3: 17
-      }, {
-        id: '12987126',
-        name: '王小虎',
-        amount1: '539',
-        amount2: '4.1',
-        amount3: 15
-      }]
+      logining: false,
+      ruleForm2: {
+        account: 'admin',
+        checkPass: '123456'
+      },
+      rules2: {
+        account: [
+          { required: true, message: '请输入账号', trigger: 'blur' }
+          // { validator: validaePass }
+        ],
+        checkPass: [
+          { required: true, message: '请输入密码', trigger: 'blur' }
+          // { validator: validaePass2 }
+        ]
+      },
+      checked: true
     }
   },
   methods: {
-    arraySpanMethod ({ row, column, rowIndex, columnIndex }) {
-      if (rowIndex % 2 === 0) {
-        if (columnIndex === 0) {
-          return [1, 2]
-        } else if (columnIndex === 1) {
-          return [0, 0]
-        }
-      }
+    handleReset2 () {
+      this.$refs.ruleForm2.resetFields()
     },
+    handleSubmit2 (ev) {
+      this.$refs.ruleForm2.validate((valid) => {
 
-    objectSpanMethod ({ row, column, rowIndex, columnIndex }) {
-      if (columnIndex === 0) {
-        if (rowIndex % 2 === 0) {
-          return {
-            rowspan: 2,
-            colspan: 1
-          }
-        } else {
-          return {
-            rowspan: 0,
-            colspan: 0
-          }
-        }
-      }
+      })
     }
   }
 }
+
 </script>
+<style >
+.login-container {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  margin: 180px auto;
+  width: 350px;
+  padding: 35px 35px 15px 35px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 0 25px #cac6c6;
+}
+title {
+  margin: 0px auto 40px auto;
+  text-align: center;
+  color: #505458;
+}
+.remember {
+  margin: 0px 0px 35px 0px;
+}
+</style>

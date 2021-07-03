@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
+import privilege from './modules/privilege'
+import getters from './getters'
+
 Vue.use(Vuex)
 
-const state = {}
-const actions = {}
-const mutations = {}
-const modules = {}
 const store = new Vuex.Store({
-  state,
-  actions,
-  mutations,
-  modules
+  modules: {
+    privilege
+  },
+  getters
 })
 
 export default store

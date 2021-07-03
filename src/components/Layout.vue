@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <el-aside width="200px">
-
+        <side-bar />
       </el-aside>
       <el-container>
         <el-header>Header</el-header>
@@ -13,6 +13,19 @@
   </div>
 
 </template>
+
+<script>
+import SideBar from './SideBar.vue'
+export default {
+  data () {
+    return {}
+  },
+  components: {
+    SideBar
+  }
+}
+</script>
+
 <style>
 .el-header,
 .el-footer {
