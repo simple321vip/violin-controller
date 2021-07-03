@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="200px">
+      <el-aside width="150px">
         <side-bar />
       </el-aside>
       <el-container>
@@ -36,9 +36,9 @@ export default {
 }
 
 .el-aside {
-  background-color: #d3dce6;
+  background-color: #e9eef3;
   color: #333;
-  text-align: center;
+  text-align: left;
   line-height: 200px;
 }
 

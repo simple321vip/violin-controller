@@ -8,19 +8,25 @@ Vue.use(Router)
 export const constRoutes = [
   {
     path: '/',
-    component: Login
+    component: Login,
+    meta: {
+      name: '項目4'
+    }
   },
   {
     path: '/login',
     name: 'login',
-    component: Login
+    component: Login,
+    meta: {
+      name: '項目3'
+    }
   },
   {
     path: '/main',
     name: 'main',
     component: layout,
     meta: {
-      name: '項目'
+      name: '項目1'
     }
   }
 ]
@@ -29,7 +35,10 @@ export const routes = [
   {
     path: '/login',
     name: 'login',
-    component: layout
+    component: layout,
+    meta: {
+      name: '項目2'
+    }
   }
 ]
 

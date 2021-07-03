@@ -1,15 +1,17 @@
 <template>
   <div>
     <el-menu :default-active="this.$route.path"
-             router="">
+             router>
       <el-menu-item v-for="(route, index) in accessRoutes"
                     v-bind:key="index"
-                    v-bind:title="route.meta.name" />
+                    v-bind:index="route.path"
+                    v-bind:title="route.meta.name">
+        {{route.meta.name}}
+      </el-menu-item>
 
     </el-menu>
 
   </div>
-
 </template>
 
 <script>
