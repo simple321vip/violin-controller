@@ -5,8 +5,12 @@
         <side-bar />
       </el-aside>
       <el-container>
-        <el-header>Header</el-header>
-        <el-main>Main</el-main>
+        <el-header>
+          <nav-bar />
+        </el-header>
+        <el-main>
+          <main-app />
+        </el-main>
         <el-footer>Footer</el-footer>
       </el-container>
     </el-container>
@@ -15,13 +19,17 @@
 </template>
 
 <script>
+import MainApp from './MainApp.vue'
+import NavBar from './NavBar.vue'
 import SideBar from './SideBar.vue'
 export default {
   data () {
     return {}
   },
   components: {
-    SideBar
+    SideBar,
+    MainApp,
+    NavBar
   }
 }
 </script>

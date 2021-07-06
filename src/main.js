@@ -10,6 +10,8 @@ import permission from './permission'
 
 Vue.use(ElementUI)
 
+require('./mock/mock')
+
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

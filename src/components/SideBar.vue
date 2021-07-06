@@ -2,7 +2,7 @@
   <div>
     <el-menu :default-active="this.$route.path"
              router>
-      <el-menu-item v-for="(route, index) in accessRoutes"
+      <el-menu-item v-for="(route, index) in routes"
                     v-bind:key="index"
                     v-bind:index="route.path"
                     v-bind:title="route.meta.name">
@@ -20,7 +20,8 @@ export default {
   name: 'SideBar',
   data () {
     return {
-      isCollapse: true
+      isCollapse: true,
+      routes: []
     }
   },
   computed: {
@@ -30,6 +31,15 @@ export default {
   },
   methods: {
     init () {
+      console.log(this.accessRoutes)
+      this.accessRoutes.forEach(element => {
+        if (element.children) {
+          element.children.forEach(e => {
+            this.routes.push(e)
+          })
+        }
+      })
+      console.log(this.routes)
     },
     handleOpen (key, keyPath) {
       console.log(key, keyPath)
@@ -48,5 +58,8 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
+}
+.el-menu-item {
+  background-color: #01dfd7;
 }
 </style>

@@ -2,13 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '../view/login'
 import layout from '../components/Layout.vue'
+import welcome from '../view/info/wel.vue'
+import detail from '../view/detail'
 
 Vue.use(Router)
 
 export const constRoutes = [
   {
     path: '/',
-    component: Login,
+    component: welcome,
     meta: {
       name: '項目4'
     }
@@ -25,21 +27,27 @@ export const constRoutes = [
     path: '/main',
     name: 'main',
     component: layout,
-    meta: {
-      name: '項目1'
-    }
+    children: [
+      {
+        path: '/main/wel',
+        component: welcome,
+        meta: {
+          name: '項目1'
+        }
+      },
+      {
+        path: '/main/do',
+        component: detail,
+        meta: {
+          name: '項目2'
+        }
+      }
+    ]
+
   }
 ]
 
 export const routes = [
-  {
-    path: '/login',
-    name: 'login',
-    component: layout,
-    meta: {
-      name: '項目2'
-    }
-  }
 ]
 
 const router = new Router({
