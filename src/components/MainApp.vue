@@ -1,6 +1,5 @@
 <template>
-  <section>
-    1111
+  <section class="section-main">
     <router-view />
   </section>
 </template>

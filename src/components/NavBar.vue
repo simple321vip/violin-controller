@@ -1,19 +1,8 @@
 <template>
-  <div>
-    <div class="block div-inline">
-      <span class="demonstration">默认</span>
-      <el-date-picker v-model="start_date"
-                      type="date"
-                      placeholder="选择日期">
-      </el-date-picker>
-    </div>
-    <div class="block div-inline">
-      <span class="demonstration">默认</span>
-      <el-date-picker v-model="end_date"
-                      type="date"
-                      placeholder="选择日期">
-      </el-date-picker>
-    </div>
+  <div class="nav-main">
+    <el-button type="open"
+               icon="open_side"
+               circle></el-button>
     <el-dropdown>
       <i class="el-icon-setting"
          style="margin-right: 15px"></i>
@@ -36,12 +25,24 @@ export default {
       start_date: null,
       end_date: null
     }
+  },
+  methods: {
+    handleOpen (key, keyPath) {
+      console.log(key, keyPath)
+    },
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
+    }
   }
 }
 </script>
 
 <style>
-.div-inline {
-  display: inline;
+.open_side {
+  background: url("../assets/logo.png") center no-repeat;
+  background-size: cover;
+}
+.nav-main {
+  float: right;
 }
 </style>

@@ -10,6 +10,37 @@ import permission from './permission'
 
 Vue.use(ElementUI)
 
+const allbtnname = [
+  {
+    text: 'open',
+    class: 'open_side',
+    icon: 'icon open_side',
+    type: 'open'
+  }
+]
+
+Vue.directive('otherRender', {
+  inserted: function (el, name, vm) {
+    let icon = ''
+    let vClass = ''
+    const type = vm.context.type
+    allbtnname.forEach(item => {
+      if (type.indexOf(item.type) !== 1) {
+        vClass = item.class
+        icon = item.icon
+      }
+    })
+    const className = el.getAttribute('class').split(' ')
+    className.push(vClass)
+    el.setAttribute('class', className.join(' '))
+    vm.context.otherRender = function (h) {
+      return h('i', {
+        class: icon
+      })
+    }
+  }
+})
+
 require('./mock/mock')
 
 Vue.config.productionTip = false

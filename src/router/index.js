@@ -2,8 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '../view/login'
 import layout from '../components/Layout.vue'
-import welcome from '../view/info/wel.vue'
+import welcome from '../view/welcome'
 import detail from '../view/detail'
+import PrepareSell from '../view/prepareSell'
 
 Vue.use(Router)
 
@@ -29,17 +30,66 @@ export const constRoutes = [
     component: layout,
     children: [
       {
-        path: '/main/wel',
+        path: '/main/welcome',
         component: welcome,
         meta: {
-          name: '項目1'
+          name: 'メインメニュー'
         }
       },
       {
-        path: '/main/do',
+        path: '/main/prepareSell',
+        component: PrepareSell,
+        meta: {
+          name: '预售信息'
+        }
+      },
+      {
+        path: '/main/news',
         component: detail,
         meta: {
-          name: '項目2'
+          name: '行业新闻'
+        }
+      },
+      {
+        path: '/main/notice',
+        component: detail,
+        meta: {
+          name: '通知公告'
+        }
+      },
+      {
+        path: '/main/laws',
+        component: detail,
+        meta: {
+          name: '政策法规'
+        }
+      },
+      {
+        path: '/main/download',
+        component: detail,
+        meta: {
+          name: '下载中心'
+        }
+      },
+      {
+        path: '/main/guide',
+        component: detail,
+        meta: {
+          name: '办事指南'
+        }
+      },
+      {
+        path: '/main/record',
+        component: detail,
+        meta: {
+          name: '网上备案'
+        }
+      },
+      {
+        path: '/main/advice',
+        component: detail,
+        meta: {
+          name: '咨询投诉'
         }
       }
     ]

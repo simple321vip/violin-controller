@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div :class="side_main"
+       v-show="isShow">
     <el-menu :default-active="this.$route.path"
              router>
       <el-menu-item v-for="(route, index) in routes"
@@ -8,9 +9,8 @@
                     v-bind:title="route.meta.name">
         {{route.meta.name}}
       </el-menu-item>
-
     </el-menu>
-
+    <el-button @click.native="handleOpen">仕様変更</el-button>
   </div>
 </template>
 
@@ -21,6 +21,8 @@ export default {
   data () {
     return {
       isCollapse: true,
+      isShow: true,
+      side_main: 'openStyle',
       routes: []
     }
   },
@@ -41,8 +43,10 @@ export default {
       })
       console.log(this.routes)
     },
-    handleOpen (key, keyPath) {
-      console.log(key, keyPath)
+    handleOpen () {
+      // this.isShow = !this.isShow
+      this.side_main = 'closeStyle'
+      return this.isShow
     },
     handleClose (key, keyPath) {
       console.log(key, keyPath)
@@ -55,9 +59,13 @@ export default {
 </script>
 
 <style>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
+.openStyle {
+}
+closeStyle {
+  width: 100px;
+}
+.side-main {
   width: 200px;
-  min-height: 400px;
 }
 .el-menu-item {
   background-color: #01dfd7;

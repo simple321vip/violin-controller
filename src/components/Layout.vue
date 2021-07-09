@@ -11,7 +11,13 @@
         <el-main>
           <main-app />
         </el-main>
-        <el-footer>Footer</el-footer>
+        <el-footer>
+          <span>Copyright © 2012 大连高新园区不动产登记服务网
+            <br />
+            业务咨询电话84615600 办公电话84615600
+          </span>
+
+        </el-footer>
       </el-container>
     </el-container>
   </div>
@@ -37,8 +43,8 @@ export default {
 <style>
 .el-header,
 .el-footer {
-  background-color: #b3c0d1;
-  color: #333;
+  background-color: #b8d1b3;
+  color: rgb(51, 51, 51);
   text-align: center;
   line-height: 60px;
 }
@@ -53,8 +59,9 @@ export default {
 .el-main {
   background-color: #e9eef3;
   color: #333;
-  text-align: center;
-  line-height: 160px;
+  line-height: 450px;
+  vertical-align: top;
+  padding: 5px;
 }
 
 body > .el-container {
