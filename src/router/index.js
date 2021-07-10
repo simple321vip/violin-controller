@@ -7,6 +7,8 @@ import detail from '../view/detail'
 import PrepareSell from '../view/prepareSell'
 import Record from '../view/record'
 import Download from '../view/download'
+import News from '../view/news'
+import Trade from '../view/trade'
 
 Vue.use(Router)
 
@@ -46,8 +48,15 @@ export const constRoutes = [
         }
       },
       {
+        path: '/main/trade',
+        component: Trade,
+        meta: {
+          name: '交易信息'
+        }
+      },
+      {
         path: '/main/news',
-        component: detail,
+        component: News,
         meta: {
           name: '行业新闻'
         }
@@ -59,13 +68,7 @@ export const constRoutes = [
           name: '通知公告'
         }
       },
-      {
-        path: '/main/laws',
-        component: detail,
-        meta: {
-          name: '政策法规'
-        }
-      },
+
       {
         path: '/main/download',
         component: Download,

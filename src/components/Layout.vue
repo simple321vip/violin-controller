@@ -12,9 +12,9 @@
           <main-app />
         </el-main>
         <el-footer>
-          <span>Copyright © 2012 大连高新园区不动产登记服务网
+          <span>Copyright © 2012 大連市XXXX区不動産登録情報ネット
             <br />
-            业务咨询电话84615600 办公电话84615600
+            電話番号80004000 営業番号84616600
           </span>
 
         </el-footer>

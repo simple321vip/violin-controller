@@ -1,12 +1,18 @@
 <template>
-  <div id="myChart"
-       :style="{width: '300px', height: '300px'}"></div>
+  <div>
+    <div id="myChart"
+         :style="{width: '300px', height: '300px'}"></div>
+    <div id="main"
+         :style="{width: '300px', height: '300px'}"></div>
+  </div>
 </template>
 
 <script>
 
 import $moment from 'moment'
 import _ from '../utils/const'
+import option from '../utils/echartsOptions'
+
 export default {
   name: 'RecordChart',
   data () {
@@ -16,6 +22,7 @@ export default {
   },
   mounted () {
     this.drawLine()
+    this.draw()
   },
   methods: {
     drawLine () {
@@ -36,7 +43,23 @@ export default {
           data: [5, 20, 36, 10, 10, 20]
         }]
       })
+    },
+    draw () {
+      const myChart = this.$echarts.init(document.getElementById('main'))
+      option.title.text = '面積分散'
+      option.title.subtext = 'なし'
+      option.legend.data = ['<50', '50~69', '70~89', '90~110', '110~139', '140>']
+      option.series[1].data = [
+        { value: 19, name: '<50' },
+        { value: 25, name: '50~69' },
+        { value: 60, name: '70~89' },
+        { value: 30, name: '90~110' },
+        { value: 20, name: '110~139' },
+        { value: 15, name: '140>' }
+      ]
+      myChart.setOption(option)
     }
+
   }
 }
 </script>

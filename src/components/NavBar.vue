@@ -1,5 +1,9 @@
 <template>
   <div class="nav-main">
+    当前时间：{{ time }}
+
+    <span>大連市XXXX区不動産登録情報ネット</span>
+
     <el-button type="open"
                icon="open_side"
                circle></el-button>
@@ -18,13 +22,22 @@
 </template>
 
 <script>
+import $moment from 'moment'
+
 export default {
   name: 'NavBar',
   data () {
     return {
       start_date: null,
-      end_date: null
+      end_date: null,
+      time: ''
     }
+  },
+  mounted () {
+    this.getdate()
+    this.timer = setInterval(() => {
+      this.getdate()
+    }, 1000)
   },
   methods: {
     handleOpen (key, keyPath) {
@@ -32,6 +45,14 @@ export default {
     },
     handleClose (key, keyPath) {
       console.log(key, keyPath)
+    },
+    getdate () {
+      this.time = $moment().format('YYYY年MM月DD日　HH:mm:ss')
+    }
+  },
+  destroyed () {
+    if (this.timer) {
+      clearInterval(this.timer)
     }
   }
 }
