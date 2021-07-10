@@ -35,7 +35,7 @@ export const constRoutes = [
         path: '/main/welcome',
         component: welcome,
         meta: {
-          name: 'メインメニュー'
+          name: '控制台'
         }
       },
       {

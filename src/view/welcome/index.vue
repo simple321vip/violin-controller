@@ -1,11 +1,17 @@
 <template>
   <div>
-    welcome to my page!
+    <div>
+      <record-chart />
+    </div>
   </div>
 </template>
 
 <script>
+import RecordChart from '../../components/Echarts.vue'
 export default {
+  components: {
+    RecordChart
+  },
   data () {
     return {
       name: 'welcome'
