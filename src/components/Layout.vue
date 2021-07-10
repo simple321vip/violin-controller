@@ -59,7 +59,7 @@ export default {
 .el-main {
   background-color: #e9eef3;
   color: #333;
-  line-height: 450px;
+  /* line-height: 450px; */
   vertical-align: top;
   padding: 5px;
 }

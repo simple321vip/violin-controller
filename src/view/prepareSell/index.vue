@@ -28,36 +28,9 @@
         </el-table-column>
       </el-table>
     </div>
-    <el-dialog title="外层 Dialog"
-               width="70%"
-               :visible.sync="outerVisible">
-      <el-table class="detailbox"
-                :row-style="{height:+'px'}"
-                :cell-style="{padding:+'px'}"
-                :data="detailbox"
-                :show-header="false"
-                border>
-        <el-table-column prop="key"
-                         fixed
-                         width="300">
-        </el-table-column>
-        <el-table-column prop="value"
-                         fixed
-                         width="180">
-        </el-table-column>
-      </el-table>
-      <el-dialog width="30%"
-                 title="内层 Dialog"
-                 :visible.sync="innerVisible"
-                 append-to-body>
-      </el-dialog>
-      <div slot="footer"
-           class="dialog-footer">
-        <el-button @click="outerVisible = false">取 消</el-button>
-        <el-button type="primary"
-                   @click="innerVisible = true">打开内层 Dialog</el-button>
-      </div>
-    </el-dialog>
+    <dia-log ref="DiaLog"
+             :detailbox="detailbox"
+             :builddings="builddings" />
   </div>
 </template>
 
@@ -65,18 +38,19 @@
 
 import HeaderBar from './HeaderBar.vue'
 import api from '../../api/prepareSell'
+import DiaLog from './DiaLog'
 
 export default {
   name: 'PrepareSell',
   components: {
-    HeaderBar
+    HeaderBar,
+    DiaLog
   },
   data () {
     return {
       tableData: [],
       detailbox: [],
-      outerVisible: false,
-      innerVisible: false
+      builddings: []
     }
   },
   methods: {
@@ -88,7 +62,7 @@ export default {
       const query = {}
       query.page = 1
       query.size = 10
-      query.project_id = form.project_id
+      // query.project_id = form.project_id
       api.getprepareSellList(query).then(response => {
         console.log(response)
         response.data.items.forEach(item => {
@@ -103,6 +77,7 @@ export default {
     },
     rowClick () {
       this.detailbox = []
+      this.builddings = []
       const query = {}
       query.page = 1
       query.size = 10
@@ -113,12 +88,24 @@ export default {
         this.detailbox.push({ key: '项目名称', value: detail.project_name })
         this.detailbox.push({ key: '开 发 商', value: detail.enterprise_name })
         this.detailbox.push({ key: '坐落位置', value: detail.address })
-        this.detailbox.push({ key: '销售面积', value: detail.area })
-        this.detailbox.push({ key: '发证机关', value: detail.certificate_No })
-        this.detailbox.push({ key: '发证日期', value: detail.certificate_No })
+        this.detailbox.push({ key: '销售面积', value: detail.area + ' ㎡' })
+        this.detailbox.push({ key: '发证机关', value: detail.certificate_org })
+        this.detailbox.push({ key: '发证日期', value: detail.certificate_date })
+        detail.buildings.forEach((building, index) => {
+          const build = {}
+          build.No = index + 1
+          build.building_No = building.building_No
+          build.building_area = building.building_area
+          build.building_addr = building.building_addr
+          build.info = '销控表'
+          this.builddings.push(build)
+        })
       })
-      this.outerVisible = true
+      this.$refs.DiaLog.onSearch()
     }
+  },
+  created () {
+    this.onSearch()
   }
 }
 </script>
@@ -128,11 +115,5 @@ export default {
 .tableBox tr {
   background-color: #ddd;
   line-height: normal;
-}
-
-.detailbox th,
-.detailbox tr {
-  background-color: #ddd;
-  width: 100%;
 }
 </style>

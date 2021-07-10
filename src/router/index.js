@@ -5,6 +5,8 @@ import layout from '../components/Layout.vue'
 import welcome from '../view/welcome'
 import detail from '../view/detail'
 import PrepareSell from '../view/prepareSell'
+import Record from '../view/record'
+import Download from '../view/download'
 
 Vue.use(Router)
 
@@ -66,7 +68,7 @@ export const constRoutes = [
       },
       {
         path: '/main/download',
-        component: detail,
+        component: Download,
         meta: {
           name: '下载中心'
         }
@@ -80,7 +82,7 @@ export const constRoutes = [
       },
       {
         path: '/main/record',
-        component: detail,
+        component: Record,
         meta: {
           name: '网上备案'
         }

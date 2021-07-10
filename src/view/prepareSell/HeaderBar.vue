@@ -103,7 +103,7 @@ export default {
   float: left;
 }
 .el-button {
-  background-color: rgb(74, 92, 194);
-  color: blue;
+  background-color: rgb(88, 181, 197);
+  color: rgba(10, 1, 1, 0.849);
 }
 </style>

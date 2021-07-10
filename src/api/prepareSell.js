@@ -13,6 +13,13 @@ const prepareSellApi = {
       method: 'get',
       params: listQuery
     })
+  },
+  getprepareSellBuilding (listQuery) {
+    return request({
+      url: '/prepare/building',
+      method: 'get',
+      params: listQuery
+    })
   }
 }
 export default prepareSellApi
