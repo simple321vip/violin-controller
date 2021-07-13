@@ -2,28 +2,29 @@
   <div>
     <header-bar />
     <div class="sqr_area">
-      <record-chart />
+      <record-charts />
     </div>
-    <div class="sqr_area">
+    <!-- <div class="sqr_area">
 
     </div>
     <div class="sqr_area">
 
     </div>
-    <div class="sqr_area">
-
-    </div>
+    <div class="sqr_area"> -->
+    <!--
+  </div> -->
   </div>
 </template>
 
 <script>
-import RecordChart from '../../components/Echarts.vue'
+
 import HeaderBar from './HeaderBar.vue'
+import RecordCharts from './RecordCharts.vue'
 
 export default {
   components: {
-    RecordChart,
-    HeaderBar
+    HeaderBar,
+    RecordCharts
   },
   data () {
     return {
@@ -35,10 +36,8 @@ export default {
 
 <style>
 .sqr_area {
-  background-color: aqua;
-  height: 250px;
-  width: 250px;
-  float: left;
+  position: absolute;
   display: inline;
+  left: 200px;
 }
 </style>
