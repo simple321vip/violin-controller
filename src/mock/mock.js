@@ -1,4 +1,5 @@
 import { getPrepareSellData, getPrepareSellDetail } from './prepareSell'
+import { getTradeData } from './trade'
 
 const Mock = require('mockjs')
 
@@ -16,8 +17,13 @@ const prepareSellDetail = Mock.mock(RegExp('/prepare/detail' + '.*'), 'get', (op
   return Mock.mock(getPrepareSellDetail)
 })
 
+const tradeData = Mock.mock(RegExp('/trade/data' + '.*'), 'get', (options) => {
+  return Mock.mock(getTradeData)
+})
+
 export {
   prepareSellData,
   prepareSellDetail,
-  test
+  test,
+  tradeData
 }
