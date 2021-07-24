@@ -26,6 +26,7 @@
               :row-style="{height:+'px'}"
               :cell-style="{padding:+'px'}"
               :data="builddings"
+              @row-click="rowClick"
               border>
       <el-table-column prop="No"
                        label="序号"
@@ -57,6 +58,7 @@
                title="楼盘信息"
                :visible.sync="innerVisible"
                append-to-body>
+      <build />
     </el-dialog>
     <!-- <div slot="footer"
          class="dialog-footer">
@@ -69,7 +71,9 @@
 </template>
 
 <script>
+import Build from './Build.vue'
 export default {
+  components: { Build },
   props: {
     detailbox: {
       type: Array,
@@ -93,6 +97,9 @@ export default {
   methods: {
     onSearch (listQuery) {
       this.outerVisible = true
+    },
+    rowClick () {
+      this.innerVisible = true
     }
   }
 }

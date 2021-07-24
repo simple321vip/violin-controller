@@ -4,6 +4,14 @@
     <div class="sqr_area">
       <record-charts />
     </div>
+    <!-- <el-tabs v-model="activeName"
+             type="card"
+             @tab-click="handleClick">
+      <el-tab-pane label="图标概率"
+                   name="first">用户管理</el-tab-pane>
+      <el-tab-pane label="配置管理"
+                   name="second">配置管理</el-tab-pane>
+    </el-tabs> -->
     <!-- <div class="sqr_area">
 
     </div>
