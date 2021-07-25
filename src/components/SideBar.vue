@@ -59,8 +59,6 @@ export default {
 </script>
 
 <style>
-.openStyle {
-}
 closeStyle {
   width: 100px;
 }

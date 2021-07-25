@@ -1,21 +1,21 @@
 <template>
   <div>
-    <el-form :model="ruleForm2"
+    <el-form :model="userForm"
              :rules="rules2"
-             ref="ruleForm2"
+             ref="userForm"
              label-position="left"
              label-width="0px"
-             class="demo-ruleForm login-container">
+             class="demo-userForm login-container">
       <h3 class="title">系统登录</h3>
-      <el-form-item prop="account">
+      <el-form-item prop="username">
         <el-input type="text"
-                  v-model="ruleForm2.account"
+                  v-model="userForm.username"
                   auto-complete="off"
                   placeholder="账号"></el-input>
       </el-form-item>
       <el-form-item prop="checkPass">
         <el-input type="password"
-                  v-model="ruleForm2.checkPass"
+                  v-model="userForm.password"
                   auto-complete="off"
                   placeholder="密码"></el-input>
       </el-form-item>
@@ -25,7 +25,7 @@
       <el-form-item style="width:100%;">
         <el-button type="primary"
                    style="width:100%;"
-                   @click.native.prevent="handleSubmit2"
+                   @click.native.prevent="handleSubmit"
                    :loading="logining">登录</el-button>
         <!--<el-button @click.native.prevent="handleReset2">重置</el-button>-->
       </el-form-item>
@@ -34,22 +34,24 @@
 </template>
 
 <script>
+import recordApi from '../../api/record'
+import router from '../../router'
 
 export default {
-  name: 'Record',
+  name: 'Login',
   data () {
     return {
       logining: false,
-      ruleForm2: {
-        account: 'admin',
-        checkPass: '123456'
+      userForm: {
+        username: 'admin',
+        password: '123456'
       },
       rules2: {
-        account: [
+        username: [
           { required: true, message: '请输入账号', trigger: 'blur' }
           // { validator: validaePass }
         ],
-        checkPass: [
+        password: [
           { required: true, message: '请输入密码', trigger: 'blur' }
           // { validator: validaePass2 }
         ]
@@ -58,12 +60,20 @@ export default {
     }
   },
   methods: {
-    handleReset2 () {
-      this.$refs.ruleForm2.resetFields()
+    handleReset () {
+      this.$refs.userForm.resetFields()
     },
-    handleSubmit2 (ev) {
-      this.$refs.ruleForm2.validate((valid) => {
-
+    handleSubmit (ev) {
+      this.$refs.userForm.validate((valid) => {
+        recordApi.authorize(this.userForm).then(response => {
+          if (response) {
+            const token = response.data.token
+            if (token) {
+              this.$store.dispatch('auth/create_token', token)
+              router.push('/record/main')
+            }
+          }
+        })
       })
     }
   }

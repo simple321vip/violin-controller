@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '../view/login'
 import layout from '../components/Layout.vue'
 import welcome from '../view/welcome'
 import detail from '../view/detail'
 import PrepareSell from '../view/prepareSell'
-import Record from '../view/record'
+import Index from '../view/record/'
+import Login from '../view/record/Login'
+import Main from '../view/record/main'
 import Download from '../view/download'
 import News from '../view/news'
 import Trade from '../view/trade'
@@ -13,56 +14,41 @@ import Trade from '../view/trade'
 Vue.use(Router)
 
 export const constRoutes = [
+
   {
     path: '/',
-    component: welcome,
-    meta: {
-      name: '項目4'
-    }
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login,
-    meta: {
-      name: '項目3'
-    }
-  },
-  {
-    path: '/main',
-    name: 'main',
     component: layout,
     children: [
       {
-        path: '/main/welcome',
+        path: '/welcome',
         component: welcome,
         meta: {
           name: '控制台'
         }
       },
       {
-        path: '/main/prepareSell',
+        path: '/prepareSell',
         component: PrepareSell,
         meta: {
           name: '预售信息'
         }
       },
       {
-        path: '/main/trade',
+        path: '/trade',
         component: Trade,
         meta: {
           name: '交易信息'
         }
       },
       {
-        path: '/main/news',
+        path: '/news',
         component: News,
         meta: {
           name: '行业新闻'
         }
       },
       {
-        path: '/main/notice',
+        path: '/notice',
         component: detail,
         meta: {
           name: '通知公告'
@@ -70,28 +56,38 @@ export const constRoutes = [
       },
 
       {
-        path: '/main/download',
+        path: '/download',
         component: Download,
         meta: {
           name: '下载中心'
         }
       },
       {
-        path: '/main/guide',
+        path: '/guide',
         component: detail,
         meta: {
           name: '办事指南'
         }
       },
       {
-        path: '/main/record',
-        component: Record,
+        path: '/record',
+        component: Index,
+        children: [
+          {
+            path: '/record/login',
+            component: Login
+          },
+          {
+            path: '/record/main',
+            component: Main
+          }
+        ],
         meta: {
           name: '网上备案'
         }
       },
       {
-        path: '/main/advice',
+        path: '/advice',
         component: detail,
         meta: {
           name: '咨询投诉'
