@@ -1,7 +1,6 @@
 <template>
   <div>
-    <router-view v-if="token === ''" />
-    <router-view v-if="token.length > 0" />
+    <router-view />
   </div>
 </template>
 

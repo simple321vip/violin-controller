@@ -2,7 +2,7 @@
   <div>
     <header-bar />
     <div>
-      <span>11111</span>
+      <span></span>
     </div>
   </div>
 </template>

@@ -55,6 +55,11 @@ export default {
         desc: ''
       }
     }
+  },
+  methods: {
+    onSubmit (value) {
+
+    }
   }
 }
 </script>
