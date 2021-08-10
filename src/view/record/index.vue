@@ -17,17 +17,8 @@ export default {
       'token'
     ])
   },
-  beforeRouteEnter (to, from, next) {
-    next(vm => {
-      if (vm.$store.getters.token.length === 0) {
-        vm.$router.push('/record/login')
-      }
-      if (vm.$store.getters.token.length > 0) {
-        vm.$router.push('/record/main')
-      }
-    })
-  },
   created () {
+    this.$router.push('/record/login')
     console.log(3333333)
   }
 

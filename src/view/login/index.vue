@@ -25,7 +25,7 @@
       <el-form-item style="width:100%;">
         <el-button type="primary"
                    style="width:100%;"
-                   @click.native.prevent="handleSubmit2"
+                   @click.native.prevent="handleLogin"
                    :loading="logining">登录</el-button>
         <!--<el-button @click.native.prevent="handleReset2">重置</el-button>-->
       </el-form-item>
@@ -61,7 +61,7 @@ export default {
     handleReset2 () {
       this.$refs.ruleForm2.resetFields()
     },
-    handleSubmit2 (ev) {
+    handleLogin (ev) {
       this.$refs.ruleForm2.validate((valid) => {
 
       })

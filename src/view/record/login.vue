@@ -25,7 +25,7 @@
       <el-form-item style="width:100%;">
         <el-button type="primary"
                    style="width:100%;"
-                   @click.native.prevent="handleSubmit"
+                   @click.native.prevent="handleLogin"
                    :loading="logining">登录</el-button>
         <!--<el-button @click.native.prevent="handleReset2">重置</el-button>-->
       </el-form-item>
@@ -63,7 +63,7 @@ export default {
     handleReset () {
       this.$refs.userForm.resetFields()
     },
-    handleSubmit (ev) {
+    handleLogin (ev) {
       this.$refs.userForm.validate((valid) => {
         recordApi.authorize(this.userForm).then(response => {
           if (response) {
