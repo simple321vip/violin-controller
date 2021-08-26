@@ -42,7 +42,6 @@ export default {
           })
         }
       })
-      console.log(this.routes)
     },
     handleOpen () {
       // this.isShow = !this.isShow
