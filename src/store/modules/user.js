@@ -1,8 +1,7 @@
-
 import { setToken } from '../../utils/auth'
 
 const state = {
-  token: ''
+  user: ''
 }
 
 const mutations = {
@@ -15,9 +14,11 @@ const mutations = {
 }
 
 const actions = {
-  create_token ({ commit }, token) {
-    commit('CREATE_TOKEN', token)
-    setToken(token)
+  async create_token ({ commit }, token) {
+    return new Promise((resolve, reject) => {
+      commit('CREATE_TOKEN', token)
+      setToken(token)
+    })
   }
 }
 

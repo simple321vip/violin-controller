@@ -16,6 +16,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import router from '../router'
 export default {
   name: 'SideBar',
   data () {
@@ -46,6 +47,9 @@ export default {
     handleOpen () {
       // this.isShow = !this.isShow
       this.side_main = 'closeStyle'
+      this.$store.dispatch('auth/logout').then(
+        router.push('/record/login')
+      )
       return this.isShow
     },
     handleClose (key, keyPath) {

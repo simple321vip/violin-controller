@@ -67,10 +67,11 @@ export default {
       this.$refs.userForm.validate((valid) => {
         recordApi.authorize(this.userForm).then(response => {
           if (response) {
-            const token = response.data.token
-            if (token) {
-              this.$store.dispatch('user/create_token', token)
-              router.push('/record/main')
+            const user = response.data
+            if (user) {
+              this.$store.dispatch('auth/login', user).then(
+                router.push('/record/main')
+              )
             }
           }
         })
