@@ -18,8 +18,7 @@ export default {
     ])
   },
   created () {
-    this.$router.push('/record/login')
-    console.log(3333333)
+    // this.$router.push('/record/login')
   }
 
 }

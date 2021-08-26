@@ -14,10 +14,10 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start()
 
   const hasToken = getToken()
-
+  console.log('asasasas')
   if (hasToken) {
-    if (to.path === '/Record/login') {
-      next({ path: '/Record' })
+    if (to.path === '/record/login') {
+      next({ path: '/record/main' })
       NProgress.done()
     } else if (to.path === '/') {
       console.log(12121121)

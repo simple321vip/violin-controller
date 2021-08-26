@@ -69,7 +69,7 @@ export default {
           if (response) {
             const token = response.data.token
             if (token) {
-              this.$store.dispatch('auth/create_token', token)
+              this.$store.dispatch('user/create_token', token)
               router.push('/record/main')
             }
           }
