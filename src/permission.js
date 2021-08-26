@@ -10,7 +10,7 @@ const whiteList = ['/login', '/welcome', '/prepareSell', '/trade', '/news', '/no
 NProgress.configure({ showSpinner: false })
 store.dispatch('privilege/create_access_routes', routes)
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   NProgress.start()
 
   if (whiteList.indexOf(to.path) !== -1) {
@@ -23,17 +23,12 @@ router.beforeEach((to, from, next) => {
       } else if (to.path === '/') {
         next({ path: '/welcome' })
       } else {
-        const hasGetUserInfo = store.getters.name
-        if (hasGetUserInfo) {
+        try {
           next()
-        } else {
-          try {
-            next()
-          } catch (error) {
-            // await store.dispatch('user/resetToken')
-            Message.error(error || 'Has Error')
-            next(`/login?redirect=${to.path}`)
-          }
+        } catch (error) {
+          await store.dispatch('auth/logout')
+          Message.error(error || 'Has Error')
+          next(`/login?redirect=${to.path}`)
         }
       }
     } else {
@@ -43,10 +38,12 @@ router.beforeEach((to, from, next) => {
         next({ path: '/record/login' })
       } else if (to.path === '/record/login') {
         next()
+      } else {
+        next({ path: '/welcome' })
       }
     }
-    NProgress.done()
   }
+  NProgress.done()
 })
 
 router.afterEach(() => {
