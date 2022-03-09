@@ -1,6 +1,17 @@
-# hello
+# desc
 
-> it is a test program!
+**Vue.js 2.9.6 
+
+# Install Setup
+
+## nvm install
+以下のリンクからnvmのダウンロードは可能です。nvm は　node.js　などの jsバージョンを管理できます。
+    https://github.com/coreybutler/nvm-windows/releases
+推薦：nvm-setup.zip 
+完了後、cmd/powershellのコンソールで：　nvm 
+Running version 1.1.9.
+
+## 
 
 ## Build Setup
 
