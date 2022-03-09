@@ -1,6 +1,7 @@
 <template>
-  <section class="section-main">
-    <router-view />
+  <section class="section-main"
+           style="height:100%;">
+    <router-view style="height:100%;" />
   </section>
 </template>
 

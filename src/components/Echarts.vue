@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div :style="chart">
+
     <div id="myChart"
-         :style="{width: '300px', height: '300px'}"></div>
+         :style="myChart"></div>
+
     <div id="main"
-         :style="{width: '300px', height: '300px'}"></div>
+         :style="main"></div>
+
   </div>
 </template>
 
@@ -17,7 +20,21 @@ export default {
   name: 'RecordChart',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      chart: {
+        display: 'flex',
+        height: '100%',
+        'align-items': 'center',
+        'justify-content': 'space-around'
+      },
+      myChart: {
+        width: '400px',
+        height: '400px'
+      },
+      main: {
+        width: '700px',
+        height: '400px'
+      }
     }
   },
   mounted () {
@@ -46,8 +63,8 @@ export default {
     },
     draw () {
       const myChart = this.$echarts.init(document.getElementById('main'))
-      option.title.text = '面積分散'
-      option.title.subtext = 'なし'
+      option.title.text = '销售面积均布'
+      option.title.subtext = 'm2'
       option.legend.data = ['<50', '50~69', '70~89', '90~110', '110~139', '140>']
       option.series[1].data = [
         { value: 19, name: '<50' },
@@ -65,4 +82,15 @@ export default {
 </script>
 
 <style>
+/* .chart {
+  flex-direction: row;
+  display: -webkit-flex;
+  align-items: center;
+
+} */
+/* #myChart {
+}
+#main {
+
+} */
 </style>

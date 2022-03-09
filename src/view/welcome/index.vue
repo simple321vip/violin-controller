@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div>
-      <record-chart />
-    </div>
+    <record-chart style="height:100%;" />
   </div>
 </template>
 
