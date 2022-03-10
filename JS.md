@@ -25,7 +25,7 @@
     - 按顺序进行变量的初始化，但是函数优先变量，声明式函数的初始化就是函数体的内容，不需要赋值操作
     - var 定义的 变量进行提升
     - var 声明 只进行一次, 声明式函数是覆盖
-    
+
     //
     console.log(F1) // undefined
     var F1 = function(){ // 此处 分解为var F1（变量提升）  和 F1 = 操作(运行时)
@@ -63,15 +63,50 @@
 ## this
   this 指向函数或者方法的调用者。
 
-## prototype _proto_
+## prototype __proto__
   理解这个我们借助 typeof 函数
+  prototype 这个只有函数才有。
 
+    function F1() {}
+    typeof F1 // 'function'
+    var F2 = new F1()
+    typeof F2 // 'object'
+    F2 作为函数F1的实例，类型变成了'object'，所以对象是没有prototype的
+    
+    __proto__ 是对象拥有的，万物皆对象，所以都有
+    
+    所有对象都有原型类或者函数也可以
+    var obj = {sss: 'guan'}
+    var array = [1]
+    var c = 1
+    var d = new F2() // function F2() {}
+ 
+    console.log(obj.__proto__ === Object.prototype) // true
+    console.log(array.__proto__ === Array.prototype)  // true
+    console.log(c.__proto__ === Number.prototype)  // true
+    console.log(d.__proto__ === Function.prototype)  // false
+    console.log(d.__proto__ === F2.prototype)  // true
+    console.log(F2.__proto__ === Function.prototype)  // true
+    // 可以看出 所有的对象(不包括原型类)的__proto__指向的是原型类的prototype
+    // 原型类的__proto__ 都是 ƒ () { [native code] } 即function
+    // 函数实例的__proto__是 函数的prototype 
+    // 而函数的__proto__ 是Function.prototype
+    // 
 
-## Object Number 
+    由于原型类的实现是不同的。
 
+## call bind apply 
+  call、apply、bind 都是改变函数内部的this指向的
+  bind 是会掉
+  call 和apply 是立即执行
+
+    // call (被指向对象，"param1", "param2")
+    // apply (被指向对象，["param1", "param2"])
+    // bind(被指向对象)("param1", "param2")
 ## Promise
 
-## 
+
+## 异步的三种方式 
 
 
-1，子元素 填充父元素剩下高度，采用 在把子元素height: 100%
+
