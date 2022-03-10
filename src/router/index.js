@@ -63,10 +63,10 @@ export const constRoutes = [
         }
       },
       {
-        path: '/guide',
-        component: detail,
+        path: '/school',
+        component: () => import('../view/school'),
         meta: {
-          name: '办事指南'
+          name: '学校'
         }
       },
       {

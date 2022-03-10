@@ -31,6 +31,8 @@
 
 <script>
 import api from '../../api/download'
+import sample1 from '../../mock/testImport'
+const dep = require('../../mock/testRequire')
 
 export default {
   name: 'Download',
@@ -38,6 +40,11 @@ export default {
     return {
       downloadItems: []
     }
+  },
+  created () {
+    sample1()
+    dep.sample2()
+    console.log('this created will be called in click this tab')
   },
   methods: {
     onSearch () {
