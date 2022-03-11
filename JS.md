@@ -105,8 +105,37 @@
     // bind(被指向对象)("param1", "param2")
 ## Promise
 
+    ES6 提供的异步编程的解决方案。
 
-## 异步的三种方式 
+    通过new Promise(function(resolve,rejected) {
+      // if resolve
+      // if rejected
+      // 无论是 resolve 和 rejected谁执行，都会触发then回调。
+      // 所以 new Promise 时候是同步的，而调用then是异步的。
+    }) 然后调用then进行回调 
+
+    也就是说 我们只需要在 promise 内部调用一个异步方法，等待返回状态，
+    成功就调用resolve，失败就调用rejected，无论成功还是失败都会触发then回调
+
+    async 和 await 是成对出现的，某些情况下我们的promise的then方法并不希望是异步的，所以我们需要 await 让他等待，并且在外部函数上加上async
+
+    就像这样子
+
+    function async test() {
+      var methodA = function () {
+        return new Promise( function(res, rej){
+          console.log(1)
+        })
+      }
+      await methodA().then(() => {
+        console.log(2)
+      })
+      console.log(3)
+    }
+    
+    test() 
+
+## JS 通信 和 监听
 
 
 
