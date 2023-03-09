@@ -5,6 +5,12 @@ metadata:
   namespace: dev
 spec:
   appoint:
-  - deploymentLabelSelector:
-      app: "test"
-    deploymentNamespace: "dev"
+    - deploymentLabelSelector:
+        app: "test"
+      deploymentNamespace: "dev"
+      zone:
+        labelSelector: "deployment.appointment/zone" # label in nodes
+        min: 1
+      node:
+        labelSelector: "deployment.appointment/node" # label in nodes
+        max: 1
