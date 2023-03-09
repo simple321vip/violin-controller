@@ -18,10 +18,10 @@ limitations under the License.
 
 package v1
 
-// FooListerExpansion allows custom methods to be added to
-// FooLister.
-type FooListerExpansion interface{}
+// AppointmentListerExpansion allows custom methods to be added to
+// AppointmentLister.
+type AppointmentListerExpansion interface{}
 
-// FooNamespaceListerExpansion allows custom methods to be added to
-// FooNamespaceLister.
-type FooNamespaceListerExpansion interface{}
+// AppointmentNamespaceListerExpansion allows custom methods to be added to
+// AppointmentNamespaceLister.
+type AppointmentNamespaceListerExpansion interface{}

@@ -1,38 +1,42 @@
 package v1
 
 import (
-    metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// Foo is a specification for a Foo resource
-type Foo struct {
-    metav1.TypeMeta   `json:",inline"`
-    metav1.ObjectMeta `json:"metadata,omitempty"`
+// Appointment is a specification for an Appointment resource
+type Appointment struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-    Spec   FooSpec   `json:"spec"`
-    Status FooStatus `json:"status"`
+	Spec   AppointmentSpec   `json:"spec"`
+	Status AppointmentStatus `json:"status"`
 }
 
-// FooSpec is the spec for a Foo resource
-type FooSpec struct {
-    DeploymentName string `json:"deploymentName"`
-    Replicas       *int32 `json:"replicas"`
+// AppointmentSpec is the spec for a Appointment resource
+type AppointmentSpec struct {
+	DeploymentLabelSelector DeploymentLabelSelector `json:"deploymentLabelSelector"`
+	DeploymentNamespace     *int32                  `json:"deploymentNamespace"`
 }
 
-// FooStatus is the status for a Foo resource
-type FooStatus struct {
-    AvailableReplicas int32 `json:"availableReplicas"`
+type DeploymentLabelSelector struct {
+	Labels map[string]string
+}
+
+// AppointmentStatus is the status for a Appointment resource
+type AppointmentStatus struct {
+	AvailableReplicas int32 `json:"availableReplicas"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// FooList is a list of Foo resources
-type FooList struct {
-    metav1.TypeMeta `json:",inline"`
-    metav1.ListMeta `json:"metadata"`
+// AppointmentList is a list of Appointment resources
+type AppointmentList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata"`
 
-    Items []Foo `json:"items"`
+	Items []Appointment `json:"items"`
 }

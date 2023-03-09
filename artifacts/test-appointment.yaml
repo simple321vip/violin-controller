@@ -1,0 +1,10 @@
+apiVersion: appointments.controller.violin.cn/v1
+kind: Appointment
+metadata:
+  name: appointment-dev
+  namespace: dev
+spec:
+  appoint:
+  - deploymentLabelSelector:
+      app: "test"
+    deploymentNamespace: "dev"

@@ -243,9 +243,9 @@ type SharedInformerFactory interface {
 	// client.
 	InformerFor(obj runtime.Object, newFunc internalinterfaces.NewInformerFunc) cache.SharedIndexInformer
 
-	Violincontroller() violincontroller.Interface
+	Controller() violincontroller.Interface
 }
 
-func (f *sharedInformerFactory) Violincontroller() violincontroller.Interface {
+func (f *sharedInformerFactory) Controller() violincontroller.Interface {
 	return violincontroller.New(f, f.namespace, f.tweakListOptions)
 }

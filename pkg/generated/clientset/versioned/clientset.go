@@ -21,7 +21,7 @@ package versioned
 import (
 	"fmt"
 	"net/http"
-	violincontrollerv1 "violin-controller/pkg/generated/clientset/versioned/typed/violincontroller/v1"
+	controllerv1 "violin-controller/pkg/generated/clientset/versioned/typed/violincontroller/v1"
 
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
@@ -30,18 +30,18 @@ import (
 
 type Interface interface {
 	Discovery() discovery.DiscoveryInterface
-	ViolincontrollerV1() violincontrollerv1.ViolincontrollerV1Interface
+	ControllerV1() controllerv1.ControllerV1Interface
 }
 
 // Clientset contains the clients for groups.
 type Clientset struct {
 	*discovery.DiscoveryClient
-	violincontrollerV1 *violincontrollerv1.ViolincontrollerV1Client
+	controllerV1 *controllerv1.ControllerV1Client
 }
 
-// ViolincontrollerV1 retrieves the ViolincontrollerV1Client
-func (c *Clientset) ViolincontrollerV1() violincontrollerv1.ViolincontrollerV1Interface {
-	return c.violincontrollerV1
+// ControllerV1 retrieves the ControllerV1Client
+func (c *Clientset) ControllerV1() controllerv1.ControllerV1Interface {
+	return c.controllerV1
 }
 
 // Discovery retrieves the DiscoveryClient
@@ -88,7 +88,7 @@ func NewForConfigAndClient(c *rest.Config, httpClient *http.Client) (*Clientset,
 
 	var cs Clientset
 	var err error
-	cs.violincontrollerV1, err = violincontrollerv1.NewForConfigAndClient(&configShallowCopy, httpClient)
+	cs.controllerV1, err = controllerv1.NewForConfigAndClient(&configShallowCopy, httpClient)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +113,7 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 // New creates a new Clientset for the given RESTClient.
 func New(c rest.Interface) *Clientset {
 	var cs Clientset
-	cs.violincontrollerV1 = violincontrollerv1.New(c)
+	cs.controllerV1 = controllerv1.New(c)
 
 	cs.DiscoveryClient = discovery.NewDiscoveryClient(c)
 	return &cs

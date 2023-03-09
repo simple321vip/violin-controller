@@ -20,8 +20,8 @@ package fake
 
 import (
 	clientset "violin-controller/pkg/generated/clientset/versioned"
-	violincontrollerv1 "violin-controller/pkg/generated/clientset/versioned/typed/violincontroller/v1"
-	fakeviolincontrollerv1 "violin-controller/pkg/generated/clientset/versioned/typed/violincontroller/v1/fake"
+	controllerv1 "violin-controller/pkg/generated/clientset/versioned/typed/violincontroller/v1"
+	fakecontrollerv1 "violin-controller/pkg/generated/clientset/versioned/typed/violincontroller/v1/fake"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
@@ -80,7 +80,7 @@ var (
 	_ testing.FakeClient  = &Clientset{}
 )
 
-// ViolincontrollerV1 retrieves the ViolincontrollerV1Client
-func (c *Clientset) ViolincontrollerV1() violincontrollerv1.ViolincontrollerV1Interface {
-	return &fakeviolincontrollerv1.FakeViolincontrollerV1{Fake: &c.Fake}
+// ControllerV1 retrieves the ControllerV1Client
+func (c *Clientset) ControllerV1() controllerv1.ControllerV1Interface {
+	return &fakecontrollerv1.FakeControllerV1{Fake: &c.Fake}
 }

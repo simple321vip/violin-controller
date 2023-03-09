@@ -26,24 +26,24 @@ import (
 	rest "k8s.io/client-go/rest"
 )
 
-type ViolincontrollerV1Interface interface {
+type ControllerV1Interface interface {
 	RESTClient() rest.Interface
-	FoosGetter
+	AppointmentsGetter
 }
 
-// ViolincontrollerV1Client is used to interact with features provided by the violincontroller.violin.cn group.
-type ViolincontrollerV1Client struct {
+// ControllerV1Client is used to interact with features provided by the controller.violin.cn group.
+type ControllerV1Client struct {
 	restClient rest.Interface
 }
 
-func (c *ViolincontrollerV1Client) Foos(namespace string) FooInterface {
-	return newFoos(c, namespace)
+func (c *ControllerV1Client) Appointments(namespace string) AppointmentInterface {
+	return newAppointments(c, namespace)
 }
 
-// NewForConfig creates a new ViolincontrollerV1Client for the given config.
+// NewForConfig creates a new ControllerV1Client for the given config.
 // NewForConfig is equivalent to NewForConfigAndClient(c, httpClient),
 // where httpClient was generated with rest.HTTPClientFor(c).
-func NewForConfig(c *rest.Config) (*ViolincontrollerV1Client, error) {
+func NewForConfig(c *rest.Config) (*ControllerV1Client, error) {
 	config := *c
 	if err := setConfigDefaults(&config); err != nil {
 		return nil, err
@@ -55,9 +55,9 @@ func NewForConfig(c *rest.Config) (*ViolincontrollerV1Client, error) {
 	return NewForConfigAndClient(&config, httpClient)
 }
 
-// NewForConfigAndClient creates a new ViolincontrollerV1Client for the given config and http client.
+// NewForConfigAndClient creates a new ControllerV1Client for the given config and http client.
 // Note the http client provided takes precedence over the configured transport values.
-func NewForConfigAndClient(c *rest.Config, h *http.Client) (*ViolincontrollerV1Client, error) {
+func NewForConfigAndClient(c *rest.Config, h *http.Client) (*ControllerV1Client, error) {
 	config := *c
 	if err := setConfigDefaults(&config); err != nil {
 		return nil, err
@@ -66,12 +66,12 @@ func NewForConfigAndClient(c *rest.Config, h *http.Client) (*ViolincontrollerV1C
 	if err != nil {
 		return nil, err
 	}
-	return &ViolincontrollerV1Client{client}, nil
+	return &ControllerV1Client{client}, nil
 }
 
-// NewForConfigOrDie creates a new ViolincontrollerV1Client for the given config and
+// NewForConfigOrDie creates a new ControllerV1Client for the given config and
 // panics if there is an error in the config.
-func NewForConfigOrDie(c *rest.Config) *ViolincontrollerV1Client {
+func NewForConfigOrDie(c *rest.Config) *ControllerV1Client {
 	client, err := NewForConfig(c)
 	if err != nil {
 		panic(err)
@@ -79,9 +79,9 @@ func NewForConfigOrDie(c *rest.Config) *ViolincontrollerV1Client {
 	return client
 }
 
-// New creates a new ViolincontrollerV1Client for the given RESTClient.
-func New(c rest.Interface) *ViolincontrollerV1Client {
-	return &ViolincontrollerV1Client{c}
+// New creates a new ControllerV1Client for the given RESTClient.
+func New(c rest.Interface) *ControllerV1Client {
+	return &ControllerV1Client{c}
 }
 
 func setConfigDefaults(config *rest.Config) error {
@@ -99,7 +99,7 @@ func setConfigDefaults(config *rest.Config) error {
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *ViolincontrollerV1Client) RESTClient() rest.Interface {
+func (c *ControllerV1Client) RESTClient() rest.Interface {
 	if c == nil {
 		return nil
 	}
